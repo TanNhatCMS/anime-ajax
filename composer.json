@@ -1,6 +1,6 @@
 {
-    "name": "tannhatcms/theme-8anime",
-    "description": "8anime theme",
+    "name": "tannhatcms/anime-ajax",
+    "description": "3anime ajax",
     "type": "library",
     "authors": [
         {
@@ -8,21 +8,18 @@
         }
     ],
     "require": {
-        "tannhatcms/ophim-core": "*",
-        "tannhatcms/notifications": "*",     
-        "tannhatcms/image-resizes": "*",
-        "tannhatcms/pagemanager": "*"        
+        "tannhatcms/ophim-core": "*"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Tannhatcms\\Theme8anime\\": "src/"
+            "Tannhatcms\\AnimeAjax\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Tannhatcms\\Theme8anime\\Theme8animeServiceProvider"
+                "Tannhatcms\\AnimeAjax\\AnimeAjaxServiceProvider"
             ]
         }
     },

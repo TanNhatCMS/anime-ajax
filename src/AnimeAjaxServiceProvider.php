@@ -1,10 +1,10 @@
 <?php
 
-namespace Tannhatcms\Theme8anime;
+namespace Tannhatcms\Ajax;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
-class Theme8animeServiceProvider extends ServiceProvider
+class AnimeAjaxServiceProvider extends ServiceProvider
 {
     public function register()
     {
