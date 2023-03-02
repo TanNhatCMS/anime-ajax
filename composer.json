@@ -1,0 +1,30 @@
+{
+    "name": "tannhatcms/theme-8anime",
+    "description": "8anime theme",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tan Nhat CMS"
+        }
+    ],
+    "require": {
+        "tannhatcms/ophim-core": "*",
+        "tannhatcms/notifications": "*",     
+        "tannhatcms/image-resizes": "*",
+        "tannhatcms/pagemanager": "*"        
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Tannhatcms\\Theme8anime\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tannhatcms\\Theme8anime\\Theme8animeServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
