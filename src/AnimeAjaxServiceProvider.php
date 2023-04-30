@@ -2,8 +2,7 @@
 
 namespace Tannhatcms\AnimeAjax;
 use Illuminate\Routing\Router;
-use Route;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AnimeAjaxServiceProvider extends ServiceProvider
 {
@@ -19,7 +18,7 @@ class AnimeAjaxServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public $routeFilePath = '/routes/web.php';
+    public $routeFilePath = '/routes/backpack/AnimeAjax.php';
 
     /**
      * Perform post-registration booting of services.
@@ -29,6 +28,10 @@ class AnimeAjaxServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        // define the routes for the application
+        $this->setupRoutes($this->app->router);
+        // publish route file
+        $this->publishes([__DIR__ . $this->routeFilePath => base_path($this->routeFilePath)], 'routes_AnimeAjax');
         //$this->loadViewsFrom(__DIR__ . '/../resources/views/ajax', 'ajax');
     }
     /**
@@ -57,6 +60,6 @@ class AnimeAjaxServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->setupRoutes($this->app->router);
+        $this->app->register(AnimeAjaxServiceProvider::class);
     }
 }
