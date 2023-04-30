@@ -3,7 +3,7 @@
 namespace Tannhatcms\AnimeAjax;
 use Illuminate\Routing\Router;
 use Route;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class AnimeAjaxServiceProvider extends ServiceProvider
 {
