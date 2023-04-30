@@ -18,7 +18,7 @@ class AnimeAjaxServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public $routeFilePath = '/routes/pagemanager.php';
+    public $routeFilePath = '/routes/web.php';
 
     /**
      * Perform post-registration booting of services.
