@@ -60,6 +60,6 @@ class AnimeAjaxServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(AnimeAjaxServiceProvider::class);
+
     }
 }
