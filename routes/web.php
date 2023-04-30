@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Tannhatcms\Theme8anime\Controllers\Theme8animeController;
+use Tannhatcms\AnimeAjax\Controllers\AnimeAjaxController;
 
 // --------------------------
 // Custom Backpack Routes
