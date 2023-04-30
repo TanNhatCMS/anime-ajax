@@ -1,7 +1,8 @@
 <?php
 
 namespace Tannhatcms\AnimeAjax;
-
+use Illuminate\Routing\Router;
+use Route;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AnimeAjaxServiceProvider extends ServiceProvider
