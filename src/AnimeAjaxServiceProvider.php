@@ -8,13 +8,10 @@ class AnimeAjaxServiceProvider extends ServiceProvider
 {
     public function register()
     {
-      
     }
-
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views/ajax', 'ajax');
-        
+        //$this->loadViewsFrom(__DIR__ . '/../resources/views/ajax', 'ajax');
     }
 
 }

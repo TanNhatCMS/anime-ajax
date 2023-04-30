@@ -3,14 +3,14 @@ namespace Tannhatcms\AnimeAjax\Controllers;
 
 use Backpack\Settings\app\Models\Setting;
 use Illuminate\Http\Request;
-use Ophim\Core\Models\Actor;
+//use Ophim\Core\Models\Actor;
 use Ophim\Core\Models\Catalog;
-use Ophim\Core\Models\Category;
-use Ophim\Core\Models\Director;
-use Ophim\Core\Models\Episode;
+//use Ophim\Core\Models\Category;
+//use Ophim\Core\Models\Director;
+//use Ophim\Core\Models\Episode;
 use Ophim\Core\Models\Movie;
-use Ophim\Core\Models\Region;
-use Ophim\Core\Models\Tag;
+//use Ophim\Core\Models\Region;
+//use Ophim\Core\Models\Tag;
 
 
 use Illuminate\Support\Facades\Cache;
@@ -52,6 +52,33 @@ class AnimeAjaxController
             </a>';
             return Response($output);
         }
+    }
+    
+    public function reportEpisode(Request $request)
+    {
+        $movie = Movie::fromCache()->find($request->movie ?: $request->movie_id);
+        if (is_null($movie)) abort(404);
+        $movie = $movie->load('episodes');
+        $episode = $movie->episodes->when($request->id, function ($collection, $id) {
+            return $collection->where('id', $id);
+        })->firstWhere('slug', $request->episode);
+
+        $episode->update([
+            'report_message' => request('message', ''),
+            'has_report' => true
+        ]);
+
+        return response()->json(['status' => 'success']);
+    }
+
+    public function rateMovie(Request $request)
+    {
+        $movie = Movie::fromCache()->find($request->movie ?: $request->id);
+        $movie->refresh()->increment('rating_count', 1, [
+            'rating_star' => $movie->rating_star +  ((int) request('rating') - $movie->rating_star) / ($movie->rating_count + 1)
+        ]);
+
+        return response()->json(['status' => 'success', 'rating_count' => $movie->rating_count, 'rating_star' => number_format($movie->rating_star ?? 0, 1) ]);
     }
     /*
     public function ajax_details(Request $request)
