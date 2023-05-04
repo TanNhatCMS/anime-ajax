@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Tannhatcms\AnimeAjax\Controllers\AnimeAjaxController;
 
 // --------------------------
@@ -36,14 +37,13 @@ Route::group([
     Route::get(sprintf('%s/report', setting('site_routes_episode', '/phim/{movie}/{episode}-{id}')), 
     function(Request $request): RedirectResponse
     {   
-        return redirect(
+        return redirect()->
             route('episodes.show', [
                 'movie' => $request->movie,
                 'movie_id' => $request->movie_id,
                 'id' => $request->id,
                 'episode' => $request->episode 
-            ])
-        );
+            ]);
     })
     ->where([
                 'movie' => '.+',
@@ -56,10 +56,10 @@ Route::group([
     Route::get(sprintf('%s/rate', setting('site_routes_movie', '/phim/{movie}')),
     function(Request $request): RedirectResponse
     {
-        return redirect(route('movies.show', [
+        return redirect()->route('movies.show', [
             'movie' => $request->movie,
             'id' => $request->id
-        ]));
+        ]);
     })
     ->where([
             'movie' => '.+',
